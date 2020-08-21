@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Getting the response{% endblock %}
+{% block stylesheet %}
+{% endblock stylesheet %}
+{% block content %}
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row justify-content-center">
+            <h1>Message activities</h1>
+          </div>
+          <div class="table-responsive">
+            <table id="userTable" class="table table-striped">
+            <tr>
+            <th>Name</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created Date</th>
+            <th>Published Date</th>
+          </tr>
+          {% if bookdata_obj %} 
+          {% for bookdata in bookdata_obj %}
+          <tr>
+            <td class="userName userData" name="name">{{bookdata.name}}</td>
+            <td class="userAddress userData" name="address">{{bookdata.title}}</td>
+            <td class="userAge userData" name="age">{{bookdata.text}}</td>
+            <td class="userAge userData" name="age">{{bookdata.created_date}}</td>
+            <td class="userAge userData" name="age">{{bookdata.published_date}}</td>
+          </tr>
+          {% endfor %}
+          {% else %}
+            <p>No book avaialble</p>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+    </div>
+     </div>
+{% endblock %}
+{% block javascript %}
+
+{% endblock javascript %}

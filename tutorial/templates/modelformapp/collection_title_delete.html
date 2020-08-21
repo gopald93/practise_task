@@ -1,0 +1,10 @@
+{% extends 'main_base.html' %}
+{% block content %}
+<br>
+    <h2>{{collection_title_obj.name}} {{collection_title_obj.language}}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure to delete this collection Tilte?</p>
+        <input  class="btn btn-primary" type="submit" value="Yes">
+    </form>
+{% endblock content %}

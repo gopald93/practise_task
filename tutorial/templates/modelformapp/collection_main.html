@@ -1,0 +1,42 @@
+{% extends 'main_base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-8">
+        <p>
+            <div class="float-left"><h3>List of Company</h3></div>
+            <a class="btn btn-success float-right" href="{%  url 'collection_add' %}">Add Company</a>
+        </p>
+        <div class="table-responsive-sm">
+        {% if collection_obj %}
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="text-center">Comapny name</th>
+                        <th class="text-center">Owner</th>
+                        <th class="text-center">Description</th>
+                         <th class="text-center">Show Details</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for p_data in collection_obj %}
+                    <tr>
+                <td class="text-center">{{p_data.subject}}</td>
+                <td class="text-center">{{p_data.owner}}</td>
+                <td class="text-center">{{p_data.note}}</td>
+        <td class="text-center"><a class="btn btn-primary" href="{%  url 'collection_each_details' p_data.id %}">Details</a></td>
+        <td class="text-center"><a class="btn btn-warning" href="{%  url 'collection_edit' p_data.id %}">Edit</a></td>                    
+    <td class="text-center"><a class="btn btn-danger" href="{%  url 'collection_delete' p_data.id %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+        </div>
+        {% else %}
+            <p class="text-center" >There is no collection available.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

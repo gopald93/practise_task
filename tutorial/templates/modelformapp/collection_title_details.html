@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Getting the response{% endblock %}
+{% block stylesheet %}
+{% endblock stylesheet %}
+{% block content %}
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+            <a class="btn btn-success float-right" href="{%  url 'collection_each_details' collection_title_obj.collection.id %}">Back</a>
+          </p>
+          <div class="row justify-content-center">
+            <h1>Details for collection Tilte</h1>
+          </div>
+          <div class="table-responsive">
+            <table id="userTable" class="table table-striped">
+            <tr>
+              <th>Subject</th>
+              <th>Owner</th>
+              <th>Note</th>
+              <th>Name</th>
+              <th>Language</th>
+          </tr>
+          {% if collection_title_obj %} 
+              <tr>
+                <td class="userName userData" name="name">{{collection_title_obj.collection.subject}}</td>
+                <td class="userAddress userData" name="address">{{collection_title_obj.collection.owner}}</td>
+                <td class="userAge userData" name="age">{{collection_title_obj.collection.note}}</td>
+                <td class="userAge userData" name="age">{{collection_title_obj.name}}</td>
+                <td class="userAge userData" name="age">{{collection_title_obj.language}}</td>
+                <div class="text-right">
+              </tr>    
+          {% else %}
+            <p>No book avaialble</p>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+    </div>
+     </div>
+{% endblock %}
+{% block javascript %}
+{% endblock javascript %}

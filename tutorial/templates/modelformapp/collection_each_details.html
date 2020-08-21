@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Getting the response{% endblock %}
+{% block stylesheet %}
+{% endblock stylesheet %}
+{% block content %}
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+            <a class="btn btn-success float-right" href="{%  url 'collection_details' %}">Back</a>
+          </p>
+          <div class="row justify-content-center">
+            <h1>Details for {{collection_obj.subject}}</h1>
+          </div>
+          <div class="table-responsive">
+            <table id="userTable" class="table table-striped">
+            <tr>
+              <th>Subject</th>
+              <th>Owner</th>
+              <th>Note</th>
+              <th>Name</th>
+              <th>Language</th>
+              <th></th>
+              <th>Activites</th>
+              <th></th>
+          </tr>
+          {% if collection_obj %} 
+              <tr>
+                <td class="userName userData" name="name">{{collection_obj.subject}}</td>
+                <td class="userAddress userData" name="address">{{collection_obj.owner}}</td>
+                <td class="userAge userData" name="age">{{collection_obj.note}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                  {% for c_data in collection_obj.collectiontitle_set.all %}
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="userAge userData" name="age">{{c_data.name}}</td>
+                  <td class="userAge userData" name="age">{{c_data.language}}</td>
+                  <div class="text-right">
+                  <td>
+                  <a class="btn btn-warning" href="{%  url 'collection_title_detail' c_data.id %}">Deatils</a>
+                  </td>
+                  <td>
+                  <a class="btn btn-warning" href="{%  url 'collection_title_edit' c_data.id %}">Edit</a>
+                  </td>
+                  <td>
+                  <a class="btn btn-danger" href="{%  url 'collection_title_delete' c_data.id %}">Delete</a>
+                  </td>
+              </tr>    
+              {% endfor %}
+          {% else %}
+            <p>No book avaialble</p>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+    </div>
+     </div>
+{% endblock %}
+{% block javascript %}
+{% endblock javascript %}

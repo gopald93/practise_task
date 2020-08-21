@@ -1,0 +1,55 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% block title %}Getting the response{% endblock %}
+{% block stylesheet %}
+{% endblock stylesheet %}
+{% block content %}
+  <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row justify-content-center">
+            <h1>Details for Employee</h1>
+          </div>
+          <div class="table-responsive">
+            <table id="userTable" class="table table-striped">
+            <tr>
+              <th>Employee Name</th>
+              <th>Designation</th>
+              <th>Department</th>
+              <th>Family Name</th>
+              <th>Relationship</th>
+              <th>Family designation</th>
+          </tr>
+          {% if employee_obj %} 
+          {% for p_data in employee_obj %}
+              <tr>
+                <td class="userName userData" name="name">{{p_data.name}}</td>
+                <td class="userAddress userData" name="address">{{p_data.designation}}</td>
+                <td class="userAge userData" name="age">{{p_data.department}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                
+                  {% for c_data in p_data.familymember_set.all %}
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td class="userAge userData" name="age">{{c_data.f_name}}</td>
+                  <td class="userAge userData" name="age">{{c_data.relationship}}</td>
+                  <td class="userAge userData" name="age">{{c_data.f_designation}}</td>
+                  <div class="text-right">
+              </tr>    
+              {% endfor %}
+              {% endfor %}
+          {% else %}
+            <p>No Employee avaialble</p>
+          {% endif %}
+        </table>
+      </div>
+    </div>
+    </div>
+     </div>
+{% endblock %}
+{% block javascript %}
+{% endblock javascript %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+    <h2>{{bookdata_obj.name}} {{bookdata_obj.title}}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure to delete this Book?</p>
+        <input  class="btn btn-primary" type="submit" value="Yes">
+    </form>
+{% endblock content %}
